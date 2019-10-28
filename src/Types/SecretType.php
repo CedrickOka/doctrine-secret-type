@@ -61,19 +61,19 @@ class SecretType extends TextType
 		return 'secret';
 	}
 	
-	public function setPrivateKeyPath(string $privateKeyPath)
+	public function setPrivateKeyPath(string $privateKeyPath) :self
 	{
 		$this->privateKeyPath = $privateKeyPath;
 		return $this;
 	}
 	
-	public function setPublicKeyPath(string $publicKeyPath)
+	public function setPublicKeyPath(string $publicKeyPath) :self
 	{
 		$this->publicKeyPath = $publicKeyPath;
 		return $this;
 	}
 	
-	public function setPassPhrase(string $passPhrase)
+	public function setPassPhrase(string $passPhrase) :self
 	{
 		$this->passPhrase = $passPhrase;
 		return $this;
