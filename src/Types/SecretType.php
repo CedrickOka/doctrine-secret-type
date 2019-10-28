@@ -1,5 +1,5 @@
 <?php
-namespace App\Doctrine\Types;
+namespace Coka\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\TextType;
