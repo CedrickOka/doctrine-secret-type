@@ -1,0 +1,39 @@
+{
+	"name" : "coka/doctrine-secret-type",
+	"type" : "library",
+	"license" : "MIT",
+	"description" : "Custom Doctrine type that encrypted column value with openssl.",
+	"keywords" : [
+		"Doctrine Type secret OPENSSL"
+	],
+	"authors" : [{
+			"name" : "Cedrick Oka Baidai",
+			"email" : "okacedrick@gmail.com"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Coka\\Doctrine\\" : "src"
+		},
+		"exclude-from-classmap" : [
+			"/tests/"
+		]
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Coka\\Doctrine\\Tests\\" : "tests"
+		}
+	},
+	"require" : {
+		"php" : ">=7.2",
+		"doctrine/dbal": "^2.9"
+	},
+	"support" : {
+		"docs" : "https://github.com/CedrickOka/coka/doctrine-secret-type/blob/master/src/Resources/doc/index.md"
+	},
+	"extra" : {
+		"branch-alias" : {
+			"dev-master" : "0.x.x-dev"
+		}
+	}
+}
