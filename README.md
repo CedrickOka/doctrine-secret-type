@@ -2,13 +2,13 @@
 
 Custom Doctrine type that encrypted column value with openssl.
 
-[![Latest Stable Version](https://poser.pugx.org/coka/coka/doctrine-secret-type/v/stable)](https://packagist.org/packages/coka/coka/doctrine-secret-type)
-[![Total Downloads](https://poser.pugx.org/coka/coka/doctrine-secret-type/downloads)](https://packagist.org/packages/coka/coka/doctrine-secret-type)
-[![Latest Unstable Version](https://poser.pugx.org/coka/coka/doctrine-secret-type/v/unstable)](https://packagist.org/packages/coka/coka/doctrine-secret-type)
-[![License](https://poser.pugx.org/coka/coka/doctrine-secret-type/license)](https://packagist.org/packages/coka/coka/doctrine-secret-type)
-[![Monthly Downloads](https://poser.pugx.org/coka/coka/doctrine-secret-type/d/monthly)](https://packagist.org/packages/coka/coka/doctrine-secret-type)
-[![Daily Downloads](https://poser.pugx.org/coka/coka/doctrine-secret-type/d/daily)](https://packagist.org/packages/coka/coka/doctrine-secret-type)
-[![Travis CI](https://travis-ci.org/CedrickOka/coka/doctrine-secret-type.svg?branch=master)](https://travis-ci.org/CedrickOka/coka/doctrine-secret-type)
+[![Latest Stable Version](https://poser.pugx.org/coka/doctrine-secret-type/v/stable)](https://packagist.org/packages/coka/doctrine-secret-type)
+[![Total Downloads](https://poser.pugx.org/coka/doctrine-secret-type/downloads)](https://packagist.org/packages/coka/doctrine-secret-type)
+[![Latest Unstable Version](https://poser.pugx.org/coka/doctrine-secret-type/v/unstable)](https://packagist.org/packages/coka/doctrine-secret-type)
+[![License](https://poser.pugx.org/coka/doctrine-secret-type/license)](https://packagist.org/packages/coka/doctrine-secret-type)
+[![Monthly Downloads](https://poser.pugx.org/coka/doctrine-secret-type/d/monthly)](https://packagist.org/packages/coka/doctrine-secret-type)
+[![Daily Downloads](https://poser.pugx.org/coka/doctrine-secret-type/d/daily)](https://packagist.org/packages/coka/doctrine-secret-type)
+[![composer.lock](https://poser.pugx.org/coka/doctrine-secret-type/composerlock)](https://packagist.org/packages/coka/doctrine-secret-type)
 
 ## Installation
 
