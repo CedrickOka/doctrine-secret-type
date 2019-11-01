@@ -29,7 +29,7 @@
 		"doctrine/dbal": "^2.9"
 	},
 	"support" : {
-		"docs" : "https://github.com/CedrickOka/coka/doctrine-secret-type/blob/master/src/Resources/doc/index.md"
+		"docs" : "https://github.com/CedrickOka/doctrine-secret-type/blob/master/src/Resources/doc/index.md"
 	},
 	"extra" : {
 		"branch-alias" : {

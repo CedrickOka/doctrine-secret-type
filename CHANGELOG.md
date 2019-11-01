@@ -1,6 +1,10 @@
 Changelog
 =========
 
+#### 1.0.6 (2019-11-01)
+
+* [Doc] Updated doc.
+
 #### 1.0.5 (2019-11-01)
 
 * Fixed bad psr-4 autoload configuration.
