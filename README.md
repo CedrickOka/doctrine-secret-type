@@ -17,7 +17,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require coka/cors-bundle
+$ composer require coka/doctrine-secret-type
 ```
 
 This command requires you to have Composer installed globally, as explained
@@ -25,6 +25,16 @@ in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
 of the Composer documentation.
 
 ## Usage
+
+### Generate the SSH keys 
+
+```bash
+$ mkdir -p config/cert
+$ openssl genpkey -out config/cert/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+$ openssl pkey -in config/cert/private.pem -out config/cert/public.pem -pubout
+```
+
+### Register new doctrine type 
 
 This package provides a App\Doctrine\Types\SecretType class that extends Doctrine\DBAL\Types\TextType.
 To get this working, you have to register the concrete column types.
@@ -41,6 +51,12 @@ use Doctrine\DBAL\Types\Type;
 
 // Register my type
 Type::addType('secret', 'App\Doctrine\Types\SecretType');
+
+/** @var \App\Doctrine\DBAL\Type\SecretType $type */
+$secretType = Type::getType('secret');
+$secretType->setPrivateKeyPath($privateKeyPath)
+			->setPublicKeyPath($publicKeyPath)
+			->setPassPhrase($passphrase);
 ```
 
 The type has to be registered with the database platform as well:
@@ -51,6 +67,8 @@ $conn = $em->getConnection();
 $conn->getDatabasePlatform()->registerDoctrineTypeMapping('LONGTEXT', 'secret');
 ```
 
+### Use secret doctrine type
+ 
  You can use type now:
  
 ```php
