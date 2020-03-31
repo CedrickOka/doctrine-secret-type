@@ -50,7 +50,7 @@ use Doctrine\DBAL\Types\Type;
 // Register my type
 Type::addType('secret', 'Oka\Doctrine\Types\SecretType');
 
-/** @var \Oka\Doctrine\Types\SecretType $type */
+/** @var \Oka\Doctrine\Types\SecretType $secretType */
 $secretType = Type::getType('secret');
 $secretType->setPrivateKeyPath($privateKeyPath)
 			->setPublicKeyPath($publicKeyPath)
@@ -72,9 +72,9 @@ In Symfony 3 Version :
 doctrine:
     dbal:
         types:
-            secret:  Oka\Doctrine\Types\SecretType
+            secret: 'Oka\Doctrine\Types\SecretType'
         mapping_types:
-            LONGTEXT: secret
+            secret: text
 ```
 
 In Symfony 4 Version :
@@ -84,9 +84,9 @@ In Symfony 4 Version :
 doctrine:
     dbal:
         types:
-            secret:  Oka\Doctrine\Types\SecretType
+            secret: 'Oka\Doctrine\Types\SecretType'
         mapping_types:
-            LONGTEXT: secret
+            secret: LONGTEXT
 ```
 
 ## Usage
