@@ -1,7 +1,7 @@
 Changelog
 =========
 
-#### 1.1.0 (2020-05-05)
+#### 1.2.0 (2020-05-05)
 
 * Fixed bug on large data encryption.
 * [Test] Added unit tests for doctrine type.
