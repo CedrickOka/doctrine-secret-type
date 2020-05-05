@@ -63,6 +63,6 @@ class JsonSecretType extends JsonType
 	 */
 	public function requiresSQLCommentHint(AbstractPlatform $platform)
 	{
-		return false;
+		return true;
 	}
 }

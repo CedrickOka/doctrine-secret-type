@@ -1,27 +1,11 @@
-# Created by https://www.gitignore.io/api/eclipse,composer
-
-### Composer ###
-
+###> composer ###
 composer.lock
 composer.phar
 /vendor/
+###< composer ###
 
-### Eclipse ###
-
-bin/
-tmp/
-*.tmp
-*.bak
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-### Eclipse Patch ###
-
-# Eclipse Core		
-.project
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

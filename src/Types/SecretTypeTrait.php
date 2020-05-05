@@ -1,6 +1,8 @@
 <?php
 namespace Oka\Doctrine\Types;
 
+use Doctrine\DBAL\Types\ConversionException;
+
 /**
  * 
  * @author Cedrick Oka Baidai <okacedrick@gmail.com>
@@ -43,25 +45,50 @@ trait SecretTypeTrait
     
     protected function encrypt($data) :?string
     {
+        $output = '';
+        $encrypted = null;
+        $maxlength = 256;
+        
         $fp = fopen($this->publicKeyPath, 'r');
         $publicKey = fread($fp, filesize($this->publicKeyPath));
         fclose($fp);
         
-        $crypted = null;
-        openssl_public_encrypt($data, $crypted, openssl_get_publickey($publicKey));
+        $key = openssl_get_publickey($publicKey);
         
-        return base64_encode($crypted);
+        while ($data) {
+            if (false === openssl_public_encrypt(substr($data, 0, $maxlength), $encrypted, $key)) {
+                throw ConversionException::conversionFailedSerialization($data, $this->getName(), openssl_error_string());
+            }
+            
+            $output .= $encrypted;
+            $data = substr($data, $maxlength);
+        }
+        
+        return base64_encode($output);
     }
     
     protected function decrypt($data) :?string
     {
+        $output = '';
+        $decrypted = null;
+        $maxlength = 512;
+        
         $fp = fopen($this->privateKeyPath, 'r');
         $privateKey = fread($fp, filesize($this->privateKeyPath));
         fclose($fp);
         
-        $decrypted = null;
-        openssl_private_decrypt(base64_decode($data), $decrypted, openssl_get_privatekey($privateKey, $this->passPhrase));
+        $data = base64_decode($data);
+        $key = openssl_get_privatekey($privateKey, $this->passPhrase);
         
-        return $decrypted;
+        while ($data) {
+            if (false === openssl_private_decrypt(substr($data, 0, $maxlength), $decrypted, $key)) {
+                throw ConversionException::conversionFailedUnserialization($data, $this->getName(), openssl_error_string());
+            }
+            
+            $output .= $decrypted;
+            $data = substr($data, $maxlength);
+        }
+        
+        return $output;
     }
 }
