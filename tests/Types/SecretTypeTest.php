@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
  */
 class SecretTypeTest extends TestCase
 {
+    /**
+     * @covers
+     */
     public function testThatWeCanconvert()
     {
         $platform = new MySQL57Platform();

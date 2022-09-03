@@ -1,4 +1,5 @@
-# Doctrine Secret Type
+Doctrine Secret Type
+====================
 
 [![Latest Stable Version](https://poser.pugx.org/coka/doctrine-secret-type/v/stable)](https://packagist.org/packages/coka/doctrine-secret-type)
 [![Total Downloads](https://poser.pugx.org/coka/doctrine-secret-type/downloads)](https://packagist.org/packages/coka/doctrine-secret-type)
@@ -11,135 +12,30 @@
 
 The coka/doctrine-secret-type package provides the ability to use custom Doctrine type that encrypted column value with openssl.
 
-## Installation
+Latest updates
+--------------
 
-Open a command console, enter your project directory and execute the
-following command to download the latest stable version of this bundle:
+For notes about latest changes please read [CHANGELOG](CHANGELOG.md), for required changes in your code please read UPGRADE chapter of documentation.
 
-```bash
-$ composer require coka/doctrine-secret-type
-```
+Documentation
+-------------
 
-This command requires you to have Composer installed globally, as explained
-in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
-of the Composer documentation.
+Read the [docs/index.md](docs/index.md).
 
-### Generate the SSH keys 
+Installation
+------------
 
-```bash
-$ mkdir -p config/cert
-$ openssl genpkey -out config/cert/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
-$ openssl pkey -in config/cert/private.pem -out config/cert/public.pem -pubout
-```
+All the installation instructions are located in the [documentation](docs/index.md).
 
-### Configuration
+Original Credits
+----------------
 
-To configure Doctrine to use secret as a field type, you'll need to set up
-the following in your bootstrap:
+* [Baidai Cedrick Oka](https://github.com/CedrickOka) as main author.
 
-```php
-<?php
-// in bootstrapping code
+Copyright and License
+---------------------
 
-// ...
-
-use Doctrine\DBAL\Types\Type;
-
-// ...
-
-// Register my type
-Type::addType('secret', 'Oka\Doctrine\Types\SecretType');
-
-/** @var \Oka\Doctrine\Types\SecretType $secretType */
-$secretType = Type::getType('secret');
-$secretType->setPrivateKeyPath($privateKeyPath)
-			->setPublicKeyPath($publicKeyPath)
-			->setPassPhrase($passphrase);
-```
-
-The type has to be registered with the database platform as well:
-
-```php
-<?php
-$conn = $em->getConnection();
-$conn->getDatabasePlatform()->registerDoctrineTypeMapping('LONGTEXT', 'secret');
-```
-
-In Symfony 3 Version :
-
-```yaml
-# app/config/config.yml
-doctrine:
-    dbal:
-        types:
-            secret: 'Oka\Doctrine\Types\SecretType'
-        mapping_types:
-            secret: text
-```
-
-In Symfony 4 Version :
-
-```yaml
-# config/packages/oka_doctrine_secret_type.yaml
-doctrine:
-    dbal:
-        types:
-            secret: 'Oka\Doctrine\Types\SecretType'
-        mapping_types:
-            secret: LONGTEXT
-```
-
-## Usage
- 
-Then, in your models, you may annotate properties by setting the `@Column`
-type to `secret`. Doctrine will handle the rest.
- 
-```php
-<?php
-namespace App\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity()
- * @ORM\Table(name="api_key")
- */
-class Apikey
-{
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @var int int
-     */
-    protected $id;
-    
-    /**
-     * @ORM\Column(type="secret")
-     * @var string $value
-     */
-    protected $value;
-
-    // Getters and setters...
-}
-```
-
-If you use the XML Mapping instead of PHP annotations :
-
-```XML
-<field name="value" type="secret" />
-```
-
-You can also use the YAML Mapping :
-
-```yaml
-    value:
-      type: secret
-```
-
-## Copyright and License
-
-The coka/doctrine-secret-type library is copyright © Baidai Cedrick Oka <https://github.com/CedrickOka> and licensed for use under the MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
+This library is copyright © Baidai Cedrick Oka <https://github.com/CedrickOka> and under the MIT license. See the complete license [in the library](LICENSE).
 
 [source](https://github.com/CedrickOka/doctrine-secret-type)
 [release](https://packagist.org/packages/coka/doctrine-secret-type)
